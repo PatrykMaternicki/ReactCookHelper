@@ -2,7 +2,7 @@
   "name": "cook-helper",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://myname.github.io/cookHelper",
+  "homepage": "http://myname.github.io/cookHelper",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
@@ -12,7 +12,8 @@
     "react-icons": "^3.8.0",
     "react-redux": "^7.1.3",
     "react-scripts": "3.3.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "slugify": "^1.3.6"
   },
   "scripts": {
     "start": "react-scripts start",

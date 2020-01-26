@@ -1,14 +1,15 @@
-export const isOpen = () => ({
+export const isOpen = (value) => 
+({
   type: 'OPEN',
-  payload: false
+  value
 });
 
-export const isClose = () => ({
+export const isClose = (value) => ({
   type: 'CLOSE',
-  payload: true
+  value
 });
 
-export const changeViewToForm = (view) => ({
-  type: 'FORM',
-  view
+export const setRecipe = (recipe) => ({
+  type: 'SET_RECIPE',
+  recipe
 });

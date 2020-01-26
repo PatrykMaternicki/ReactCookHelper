@@ -2,27 +2,40 @@ import React, {Component} from 'react';
 import Sidebar from './components/Sidebar.js';
 import Form from './components/Form.js';
 import Main from './components/Main.js';
+import List from './components/List.js';
 import { connect } from "react-redux";
 import './App.css';
 
 const mapStateToProps = (state) => {
   return {
     isOpen: state.isOpen,
-    view: state.view
+    view: ''
   }
 };
 
 class App extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      view: 'MAIN'
+    }
     this.dictionares = {
       FORM: {
         component: <Form />
       },
       MAIN: {
         component: <Main />
+      },
+      LIST: {
+        component: <List />
       }
     }
+  }
+
+  onChangeView = (view) => {
+    this.setState({
+      view
+    });
   }
 
   toggleExpand(baseClass) {
@@ -30,14 +43,14 @@ class App extends Component {
   }
 
   toggleView() {
-    return this.dictionares[this.props.view].component;
+    return this.dictionares[this.state.view].component;
   }
 
   render() {
     return (
       <div class={this.toggleExpand('app')}>
         <div class='app__leftColumn'>
-          <Sidebar className="sidebar" />
+          <Sidebar changeView={this.onChangeView} className="sidebar" />
         </div>
         <div className="app__rightColumn">
           {this.toggleView()}

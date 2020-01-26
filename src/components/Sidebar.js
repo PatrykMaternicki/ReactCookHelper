@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-import { FaBars, FaTimes, FaPlus } from 'react-icons/fa';
+import { FaBars, FaTimes, FaPlus, FaList } from 'react-icons/fa';
 import { connect } from "react-redux";
-import { isOpen, isClose, changeViewToForm } from "../store/actions";
+import { isOpen, isClose } from "../store/actions";
 
 const mapDispatchToProps = dispatch => ({
   isOpen: () => dispatch(isOpen()),
   isClose: () => dispatch(isClose()),
-  changeViewToForm: () => dispatch(changeViewToForm())
- })
+})
 
 const mapStateToProps = (state) => {
   return {
@@ -19,7 +18,7 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
     }
   }
 
@@ -28,8 +27,8 @@ class Sidebar extends Component {
     !this.state.isOpen ? this.props.isOpen(this.state.isOpen) : this.props.isClose(this.state.isOpen);
   }
 
-  handleView() {
-    this.props.changeViewToForm();
+  handleView(view) {
+    this.props.changeView(view);
   }
 
   handleIcon() {
@@ -53,10 +52,19 @@ class Sidebar extends Component {
               <button
               title="Add recipe"
               className={`${this.props.className}__button`}
-              onClick={this.handleView.bind(this)}
+              onClick={this.handleView.bind(this, 'FORM')}
             >
               <FaPlus size="2rem"/>
               {this.state.isOpen ? 'Add recipe' : ''}
+              </button>
+
+              <button
+              title="Show my recipes"
+              className={`${this.props.className}__button`}
+              onClick={this.handleView.bind(this, 'LIST')}
+            >
+              <FaList size="2rem"/>
+              {this.state.isOpen ? 'Show my recipes' : ''}
               </button>
             </li>
           </ul>

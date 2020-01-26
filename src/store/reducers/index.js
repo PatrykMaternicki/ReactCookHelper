@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import { isOpen } from "./isOpen";
-import { view } from "./view";
+import { recipe } from "./recipe";
 
 export default combineReducers({
   isOpen,
-  view
+  recipe
 });
